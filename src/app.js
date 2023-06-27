@@ -1,7 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import SwipeableViews from 'react-swipeable-views';
-import { Metronome } from './components';
+import { Metronome, Nav } from './components';
+import { Link } from "react-router-dom";
+import {
+  HashRouter,
+  Route,
+  Routes
+} from "react-router-dom";
 
 const styles = {
   slide: {
@@ -43,7 +49,15 @@ const MyComponent = () => (
 function MainComponent() {
   return (
     <div>
-      <MyComponent></MyComponent>
+      <HashRouter>
+        <Routes>
+          <Route path="/" exact     element={ <Nav /> } />
+          <Route path="/one"  element={ <Metronome /> } />
+          <Route path="/two" element={ <MyComponent /> } />
+        </Routes>
+      <Link to="/" style={{ width: '50px', height: '50px', border: '1px solid blue', position: 'fixed', right: '0', top: '0'}}></Link>
+      </HashRouter>
+      {/* <MyComponent></MyComponent> */}
     </div>
   );
 }
